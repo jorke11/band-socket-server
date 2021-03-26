@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket</title>
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="userlist">
+        <ul id="users">
+
+        </ul>
+    </div>
+    
+</body>
+<script>
+    
+    const socket = io("http://localhost:5000")
+    socket.on("greeting",(data)=>{
+        
+        var user  = document.createElement("li")
+        user.appendChild(document.createTextNode(data.user))
+        document.getElementById("users").appendChild(user)
+
+        console.log('data',data);
+    })
+</script>
+</html>
